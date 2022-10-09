@@ -28,21 +28,6 @@ function Cadastro() {
 
 
 
-
-    /*
-    function cadastroSucesso() {
-
-      
-
-
-        ReactDOM.render(<>{email === confirmarEmail ? (<p>cadastrado com sucesso</p>) : (<p>erro,os e-mails precisam ser iguais!</p>)}</>, document.getElementById('teste'));
-        setEmail('')
-
-
-    }
-
-*/
-
     return (
         <>
 
