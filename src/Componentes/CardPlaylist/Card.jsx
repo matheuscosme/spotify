@@ -14,8 +14,8 @@ return(
                     <tbody>
                         <tr>
                             <td>
-                                <h3>{banda}</h3>
                                 <Link to = {"/Playlist/" + link}> <img src={capa}/></Link>
+                                <h3>{banda}</h3>
                             </td>
                         </tr>
                     </tbody>

@@ -18,7 +18,7 @@ function App() {
 
         <Route path="/Cadastro" element={<Cadastro />}></Route>
 
-        <Route path="/Playlist/:artista?" element={<Playlist />}></Route>
+        <Route path="/Playlist/:artista" element={<Playlist />}></Route>
 
       </Routes>
     </Router>

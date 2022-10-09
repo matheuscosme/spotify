@@ -1,19 +1,16 @@
 import React from 'react';
-import '../Menu/Menu.jsx';
 import Card from '../CardPlaylist/Card';
-// import Playlist from '../Playlist/Playlist.jsx';
-import { Link } from 'react-router-dom';
 import styles from './Home.modules.css'
 import SideBar from '../BarraLateral/SideBar.jsx';
-import Playlist from '../Playlist/Playlist.jsx';
+
 
 
 
 function Home() {
     const playlists = [
-        {estilo:"Metal", banda:"Iron Maiden", capa:"img/Fear_of_the_dark.jpg", link:"Iron"},
-        {estilo:"Reggae", banda:"Bob Marley", capa:"img/is this love.jpg", link:"Bob"},
-        {estilo:"Pop", banda:"Beyoncé", capa:"img/Beyonce.jpg", link:"Bey"}
+        {estilo:"Metal", banda:"Iron Maiden", capa:"img/iron.jpg", link:"Iron"},
+        {estilo:"Reggae", banda:"Bob Marley", capa:"img/bob.jpg", link:"Bob"},
+        {estilo:"Pop", banda:"Beyoncé", capa:"img/bey.jpg", link:"Bey"}
     ]
     return(
 <>

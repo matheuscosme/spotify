@@ -9,7 +9,7 @@ function Menu() {
           <header>   
               <nav className="nav_bar">
               <Link to="/" className="navbar-brand">
-                  <img id="logo" src="./img/Spotify2.png" alt="spotify"/>
+                  <img id="logo" src="../img/Spotify2.png" alt="spotify"/>
               </Link>
                   
               <ul className="nav-list">
