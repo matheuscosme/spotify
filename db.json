@@ -1,27 +1,76 @@
 {
-    "playlists" : [
-        {"id":"1", "estilo":"Metal", "banda":"Iron Maiden", "capa":"img/1.jpg", "link":"Iron", "nome":"Iron Maiden",
-            "musicas": [
-                {"nome":"The Trooper", "endereco":"../musica/iron/iron1.mp3"},
-                {"nome":"The Trooper", "endereco":"../musica/iron/iron1.mp3"}
-        ]},
-        {"id":"2", "estilo":"Reggae", "banda":"Bob Marley", "capa":"img/2.jpg", "link":"Bob","nome":"Bob Marley", 
-            "musicas": [
-                {"nome": "Is this Love", "endereco": "../musica/bob/bob1.mp3"},
-                {"nome":"One Love", "endereco":"../musica/bob/bob2.mp3"},
-                {"nome":"Teste", "endereco":"../musica/bob/bob3.mp3"}
-        ]},
-        {"id":"3", "estilo":"Pop", "banda":"Beyoncé", "capa":"img/3.jpg", "link":"Bey"}
-    ],
-    "users": [
+  "playlists": [
+    {
+      "id": "1",
+      "estilo": "Metal",
+      "banda": "Iron Maiden",
+      "capa": "img/1.jpg",
+      "link": "Iron",
+      "nome": "Iron Maiden",
+      "musicas": [
         {
-            "id": 10,
-            "nome": "teste",
-            "email": "oiTeste@gmail.com",
-            "senha": "123"
+          "nome": "The Trooper",
+          "endereco": "../musica/iron/iron1.mp3"
+        },
+        {
+          "nome": "The Trooper",
+          "endereco": "../musica/iron/iron1.mp3"
         }
-    ]
+      ]
+    },
+    {
+      "id": "2",
+      "estilo": "Reggae",
+      "banda": "Bob Marley",
+      "capa": "img/2.jpg",
+      "link": "Bob",
+      "nome": "Bob Marley",
+      "musicas": [
+        {
+          "nome": "Is this Love",
+          "endereco": "../musica/bob/bob1.mp3"
+        },
+        {
+          "nome": "One Love",
+          "endereco": "../musica/bob/bob2.mp3"
+        },
+        {
+          "nome": "Teste",
+          "endereco": "../musica/bob/bob3.mp3"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "estilo": "Minha Playlist",
+      "banda": "Favoritas",
+      "capa": "img/3.jpg",
+      "link": "Bey",
+      "nome": "Minha Playlist",
+      "musicas": [
+        {
+          "nome": "Is this Love",
+          "endereco": "../musica/bob/bob1.mp3"
+        },
+        {
+          "nome": "The Trooper",
+          "endereco": "../musica/iron/iron1.mp3"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 10,
+      "nome": "teste",
+      "email": "oiTeste@gmail.com",
+      "senha": "123"
+    },
+    {
+      "nome": "Matheus",
+      "email": "matheus@gmail.com",
+      "senha": "12345",
+      "id": 11
+    }
+  ]
 }
-
-
-

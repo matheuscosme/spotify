@@ -5,9 +5,10 @@ import { useState } from 'react'
 import './Cadastro.modules.css'
 function Cadastro() {
 
-    const [nomePerfil, setNomePerfil] = useState()
+    const [nome, setNome] = useState()
     const [confirmarEmail, setconfirmarEmail] = useState()
     const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
     const [sucesso, setSucesso] = useState()
 
 
@@ -15,16 +16,31 @@ function Cadastro() {
 
         e.preventDefault()
 
-        ReactDOM.render(<>{email === confirmarEmail ? (<p>cadastrado com sucesso</p>) : (<p>erro,os e-mails precisam ser iguais!</p>)}</>, document.getElementById('teste'));
+        ReactDOM.render(<>{email === confirmarEmail ? (<p>Cadastrado com sucesso!</p>) : (<p>E-mails precisam ser iguais!</p>)}</>, document.getElementById('teste'));
         if (email == confirmarEmail) {
             setSucesso(true)
         } else {
             setSucesso(false)
         }
 
+        const user = {nome,email,senha}
+
+        fetch("http://localhost:3001/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+
         e.target.reset();
 
     }
+
+    // function salvarCadastro(e){
+    //     e.preventDefault()
+        
+    // }
 
 
 
@@ -68,13 +84,14 @@ function Cadastro() {
                             <input type="email" name='confirmarEmail' placeholder="Insira o e-mail novamente" class="form-control" required
                                 id="confirmarEmail" aria-describedby="emailHelp" onChange={(e) => setconfirmarEmail(e.target.value)} />
                             {email != confirmarEmail ? <p>e-mails precisam ser iguais!</p> : <p></p>}
-                            <label htmlFor="senha" class="form-label">Crie uma senha</label>
-                            <input type="password" placeholder="Crie uma senha." class="form-control" required id="senha"
-                                aria-describedby="emailHelp" />
 
-                            <label htmlFor="nomePerfil" class="form-label">Como devemos chamar você?</label>
+                            <label htmlFor="senha" class="form-label">Crie uma senha</label>
+                            <input type="password" placeholder="Crie uma senha." onChange={(e) => setSenha(e.target.value)} 
+                            class="form-control" required id="senha" aria-describedby="emailHelp" />
+
+                            <label htmlFor="nome" class="form-label">Como devemos chamar você?</label>
                             <input type="text" placeholder="Insira um nome de perfil" class="form-control" required
-                                id="nomePerfil" aria-describedby="emailHelp" onChange={(e) => setNomePerfil(e.target.value)} />
+                                id="nome" aria-describedby="emailHelp" onChange={(e) => setNome(e.target.value)} />
                             <div id="emailHelp" class="form-text" style={{ color: 'gray' }}>Isso aparece no seu perfil.
                             </div>
 
