@@ -12,6 +12,13 @@
                 {"nome":"Teste", "endereco":"../musica/bob/bob3.mp3"}
         ]},
         {"id":"3", "estilo":"Pop", "banda":"Beyoncé", "capa":"img/3.jpg", "link":"Bey"}
+    ],
+    "users": [
+        {
+            "id": 10,
+            "nome": "teste",
+            "email": "oiTeste@gmail.com"
+        }
     ]
 }
 
