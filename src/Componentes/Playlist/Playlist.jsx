@@ -3,33 +3,26 @@ import React from 'react'
 import styles from './Playlist.modules.css'
 import { useParams } from 'react-router-dom'
 import Player from './Player';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 function Playlist() { 
 
-    const {artista} = useParams();
-    var srcImg = "../img/" + artista + ".jpg";
+    const {id} = useParams();
+    var srcImg = "../img/" + id + ".jpg";
     var musicas = [];
 
-    const listaDeArtistas = [
-        {cod:"Bob", nome:"Bob Marley",
-            musicas: [
-                {nome: "Is this Love", endereco: '../musica/bob/bob1.mp3'},
-                {nome:"One Love", endereco:'../musica/bob/bob2.mp3'},
-                {nome:"Teste", endereco:'../musica/bob/bob3.mp3'}
-            ]
-        },
+    const [playlists, setPlaylists] = useState([]);
 
-        {cod:"Iron", nome:"Iron Maiden",
-            musicas: [
-                {nome:"The Trooper", endereco:'../musica/iron/iron1.mp3'},
-                {nome:"The Trooper", endereco:'../musica/iron/iron1.mp3'}
-            ]
-        }
-    ]
+    useEffect( () => {
+        axios.get('http://localhost:3001/playlists')
+            .then((res) =>setPlaylists(res.data) )
+    }, [] )
 
-    for(let i = 0; i<listaDeArtistas.length; i++){
-        if(listaDeArtistas[i].cod == artista){
-            var nomeDoArtista = listaDeArtistas[i].nome;
-            musicas = listaDeArtistas[i].musicas
+
+    for(let i = 0; i<playlists.length; i++){
+        if(playlists[i].id == id){
+            var nomeDoArtista = playlists[i].nome;
+            musicas = playlists[i].musicas
         }
     }
 
