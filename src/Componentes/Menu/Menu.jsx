@@ -15,6 +15,7 @@ function Menu() {
                 <ul className="nav-list">
                     <li><Link to = "/Cadastro" className='a_menu'>Cadastrar</Link></li>
                     <li><Link to = "/Faq" className='a_menu'>FAQ</Link></li>
+                    <li><Link to = "/Login" className='a_menu'>Login</Link></li>
                 </ul>
               </nav>
           </header>

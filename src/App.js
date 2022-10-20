@@ -5,6 +5,7 @@ import Menu from'./Componentes/Menu/Menu'
 import Cadastro from './Componentes/Cadastro/Cadastro'
 import Playlist from './Componentes/Playlist/Playlist'
 import React from 'react'
+import Login from './Componentes/Login/Login'
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path="/Cadastro" element={<Cadastro />}></Route>
 
         <Route path="/Playlist/:id" element={<Playlist />}></Route>
+
+        <Route path="/Login" element={<Login />}></Route>
 
       </Routes>
     </Router>
