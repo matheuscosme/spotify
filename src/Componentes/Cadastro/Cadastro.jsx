@@ -37,11 +37,6 @@ function Cadastro() {
 
     }
 
-    // function salvarCadastro(e){
-    //     e.preventDefault()
-        
-    // }
-
 
 
     return (
