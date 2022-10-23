@@ -1,64 +1,91 @@
 {
+
+  "todasAsMusicas": [
+    {
+      "id":"1",
+      "nome":"Is this Love",
+      "artista":"Bob Marley",
+      "endereco":"../musica/bob1.mp3"
+    },
+    {
+      "id":"2",
+      "nome":"One Love",
+      "artista":"Bob Marley",
+      "endereco":"../musica/bob2.mp3"
+    },
+    {
+      "id":"3",
+      "nome":"The Trooper",
+      "artista":"Iron Maiden",
+      "endereco":"../musica/iron1.mp3"
+    }
+
+  ],
+
   "playlists": [
     {
       "id": "1",
       "estilo": "Metal",
-      "banda": "Iron Maiden",
-      "capa": "img/1.jpg",
-      "link": "Iron",
       "nome": "Iron Maiden",
       "musicas": [
         {
           "nome": "The Trooper",
-          "endereco": "../musica/iron/iron1.mp3"
-        },
-        {
-          "nome": "The Trooper",
-          "endereco": "../musica/iron/iron1.mp3"
+          "endereco": "../musica/iron1.mp3"
         }
       ]
     },
     {
       "id": "2",
       "estilo": "Reggae",
-      "banda": "Bob Marley",
-      "capa": "img/2.jpg",
-      "link": "Bob",
       "nome": "Bob Marley",
       "musicas": [
         {
           "nome": "Is this Love",
-          "endereco": "../musica/bob/bob1.mp3"
+          "endereco": "../musica/bob1.mp3"
         },
         {
           "nome": "One Love",
-          "endereco": "../musica/bob/bob2.mp3"
-        },
-        {
-          "nome": "Teste",
-          "endereco": "../musica/bob/bob3.mp3"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "estilo": "Minha Playlist",
-      "banda": "Favoritas",
-      "capa": "img/3.jpg",
-      "link": "Bey",
-      "nome": "Minha Playlist",
-      "musicas": [
-        {
-          "nome": "Is this Love",
-          "endereco": "../musica/bob/bob1.mp3"
-        },
-        {
-          "nome": "The Trooper",
-          "endereco": "../musica/iron/iron1.mp3"
+          "endereco": "../musica/bob2.mp3"
         }
       ]
     }
   ],
+
+  "playlistsDeUsuarios": [
+    {
+      "id":"3",
+      "idDoUsuario": 11,
+      "estilo": "Minha Playlist",
+      "nome": "Playlist Personalizada",
+      "musicas": [
+        {
+          "nome": "Is this Love",
+          "endereco": "../musica/bob1.mp3"
+        },
+        {
+          "nome": "The Trooper",
+          "endereco": "../musica/iron1.mp3"
+        }
+      ]
+    },
+    {
+      "id":"4",
+      "idDoUsuario": 11,
+      "estilo": "Minha Playlist",
+      "nome": "Playlist Personalizada",
+      "musicas": [
+        {
+          "nome": "Is this Love",
+          "endereco": "../musica/bob1.mp3"
+        },
+        {
+          "nome": "The Trooper",
+          "endereco": "../musica/iron1.mp3"
+        }
+      ]
+    }
+  ],
+
   "users": [
     {
       "id": 10,

@@ -9,6 +9,7 @@ import Login from './Componentes/Login/Login'
 import AlterarCadastro from './Componentes/AlterarCadastro/AlterarCadastro'
 import ListarMusicas from './Componentes/Playlist/ListarMusicas'
 import CriarPlaylist from './Componentes/Playlist/CriarPlaylist'
+import PlaylistDoUser from './Componentes/Playlist/PlaylistDoUser'
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         <Route path="/Cadastro" element={<Cadastro />}></Route>
 
         <Route path="/Playlist/:id" element={<Playlist />}></Route>
+
+        <Route path="/PlaylistDoUser/:id" element={<PlaylistDoUser />}></Route>
 
         <Route path="/Login" element={<Login />}></Route>
 

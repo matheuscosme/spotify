@@ -16,16 +16,12 @@ function CriarPlaylist() {
     const [listaDeMusicas, setLista] = useState([]);
 
     useEffect( () => {
-        axios.get('http://localhost:3001/playlists')
+        axios.get('http://localhost:3001/todasAsMusicas')
             .then((res) =>setLista(res.data) )
     }, [] )
 
 
-    for(let i = 0; i<listaDeMusicas.length; i++){
-        for(let j=0; j<listaDeMusicas[i].musicas.length; j++){  
-            musicas.push(listaDeMusicas[i].musicas[j].nome);
-        }
-    }
+    musicas = listaDeMusicas;
 
 
   
@@ -46,7 +42,7 @@ function CriarPlaylist() {
                         onChange={(e) => setNomeBusca(e.target.value)} value={nomeBusca} />
 
                         <div className='musicas'>
-                                {musicas.map(musica => <ListarMusicas nomeDaMusica={musica}/>)}
+                                {musicas.map(musica => <ListarMusicas nomeDaMusica={musica.nome}/>)}
                         </div>
 
                         <button class="btn bg-white" type="submit">Criar Playlist</button>
