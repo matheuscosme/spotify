@@ -38,17 +38,32 @@ a:focus {
   background: #fff;
 }
 
+.screen {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+
 .wrapper {
+  float: left;
   display: flex;
-  width: 100%;
+  width: 80%;
+  height: 100%;
   align-items: stretch;
+}
+
+.side {
+  float: left;
 }
 
 
 #sidebar {
-  min-width: 200px;
+  /* min-width: 200px;
   max-width: 200px;
-  min-height: 80vh;
+  min-height: 80vh; */
+  height: 700px;
+  width: 200px;
 }
 
 

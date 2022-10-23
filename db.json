@@ -55,8 +55,8 @@
     {
       "id":"3",
       "idDoUsuario": 11,
-      "estilo": "Minha Playlist",
-      "nome": "Playlist Personalizada",
+      "estilo": "Usuário",
+      "nome": "Personalizada",
       "musicas": [
         {
           "nome": "Is this Love",
@@ -71,8 +71,8 @@
     {
       "id":"4",
       "idDoUsuario": 11,
-      "estilo": "Minha Playlist",
-      "nome": "Playlist Personalizada",
+      "estilo": "Usuário",
+      "nome": "Playlist",
       "musicas": [
         {
           "nome": "Is this Love",

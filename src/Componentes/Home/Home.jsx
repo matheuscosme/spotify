@@ -40,19 +40,25 @@ function Home() {
     return(
 <>
 
-    <div className="App">     
-        <div className="wrapper">
-            <SideBar/>
-            {playlistsPublicas.map(playlist => <Card estilo={playlist.estilo} nome={playlist.nome} id={playlist.id}/>)}
-            <br />
-            <div>
+        <div className='screen'>
+            <div className='side'><SideBar/></div>
+            <div className='wrapper'><p>PLAYLISTS PÚBLICAS</p>
+                <br /></div>
+            <div className="wrapper">
+                {playlistsPublicas.map(playlist => <Card estilo={playlist.estilo} nome={playlist.nome} id={playlist.id}/>)}          
+            </div>
+            <div className='wrapper'>
+                {usuario && <p>PLAYLISTS DE {usuario.nome}</p>}
+                    <br />
+            </div>
+            <div className='wrapper'>
                 {usuario && 
-                            playlistsPrivadas.map(playlist => <CardPrivado estilo={playlist.estilo} nome={playlist.nome} id={playlist.id}/>)}
+                        playlistsPrivadas.map(playlist => <CardPrivado estilo={playlist.estilo} nome={playlist.nome} id={playlist.id}/>)}  
             </div>
         </div>
+        
 
 
-    </div>
 </>
     )
     
