@@ -21,7 +21,7 @@ function AlterarCadastro() {
         setNome(usuario.nome);
         setEmail(usuario.email);
         setSenha(usuario.senha);
-        setId(usuario.id)
+        setId(usuario.id);
     }, [])
 
     function cadastrando(e) {

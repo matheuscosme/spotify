@@ -27,4 +27,10 @@ p{
     font-size: large;
 }
 
+.listagem p{
+    color: yellow;
+    padding: 0;
+    margin: 0;
+}
+
 

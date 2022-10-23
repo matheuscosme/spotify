@@ -11,6 +11,7 @@ function Login() {
     const [senha, setSenha] = useState();
     const [email, setEmail] = useState();
     const navigate = useNavigate();
+    localStorage.clear();
 
 
     function handleSubmit(e) {

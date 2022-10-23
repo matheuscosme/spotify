@@ -6,6 +6,11 @@ function Menu() {
 
     const [usuario, setUsuario] = useState();
 
+    useEffect(() => {
+        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+        setUsuario(usuarioLogado);
+    }, [])
+
 //useEffect
 
   return(
@@ -18,11 +23,18 @@ function Menu() {
                 </Link>
                   
                 <ul className="nav-list">
-                    <li><Link to = "/Cadastro" className='a_menu'>Cadastrar</Link></li>
-                    <li><Link to = "/AlterarCadastro" className='a_menu'>Editar</Link></li>
+                    {!usuario && 
+                        <li><Link to = "/Cadastro" className='a_menu'>Cadastrar</Link></li>}
+                    {usuario &&        
+                        <li><Link to = "/AlterarCadastro" className='a_menu'>Editar</Link></li>}
                     <li><Link to = "/Faq" className='a_menu'>FAQ</Link></li>
-                {!usuario && 
+                    {usuario &&        
+                    <li><Link to = "/CriarPlaylist" className='a_menu'>Criar Playlist</Link></li>}
+                    {!usuario && 
                         <li><Link to = "/Login" className='a_menu'>Login</Link></li>}
+                    {usuario && 
+                        <li><Link to = "/Login" className='a_menu'>Logout</Link></li>}
+
                 </ul>
               </nav>
           </header>
