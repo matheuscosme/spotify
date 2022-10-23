@@ -7,7 +7,7 @@ function ListarMusicas({nomeDaMusica}) {
     return(
         <>
         <div className='listagem'>
-            <p>{nomeDaMusica}</p>
+            <input type="checkbox">{nomeDaMusica}</input>
         </div>
     </>
     )

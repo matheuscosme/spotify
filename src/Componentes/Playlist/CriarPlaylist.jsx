@@ -1,7 +1,7 @@
 import ReactAudioPlayer from 'react-audio-player'
 import React from 'react'
 import styles from './Playlist.modules.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Player from './Player';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -11,6 +11,13 @@ function CriarPlaylist() {
     let musicas = [];
     const [nomeDaPlaylist, setNomeDaPlaylist] = useState()
     const [nomeBusca, setNomeBusca] = useState()
+    const [usuario, setUsuario] = useState()
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+        setUsuario(usuarioLogado);
+    }, [])
 
 
     const [listaDeMusicas, setLista] = useState([]);
@@ -23,6 +30,10 @@ function CriarPlaylist() {
 
     musicas = listaDeMusicas;
 
+    function salvarPlaylist(){
+        axios.post('http://localhost:3001/playlistsDeUsuarios',{idDoUsuario:usuario.id,nome:nomeDaPlaylist, estilo:usuario.nome})
+            .then(navigate('/'))
+    }
 
   
     return(
@@ -31,19 +42,19 @@ function CriarPlaylist() {
 
             <div class="row">
                 <div class="col-sm p-3">
-                    <form action="" >
+                    <form action="" onSubmit={salvarPlaylist}>
 
                         <label class="form-label">Nome da Playlist</label>
                         <input name='playlist' class="form-control"
                         onChange={(e) => setNomeDaPlaylist(e.target.value)} value={nomeDaPlaylist} />
 
-                        <label class="form-label">Buscar Músicas</label>
+                        {/* <label class="form-label">Buscar Músicas</label>
                         <input name='buscar' class="form-control"
-                        onChange={(e) => setNomeBusca(e.target.value)} value={nomeBusca} />
-
+                        onChange={(e) => setNomeBusca(e.target.value)} value={nomeBusca} /> */}
+                        {/* 
                         <div className='musicas'>
                                 {musicas.map(musica => <ListarMusicas nomeDaMusica={musica.nome}/>)}
-                        </div>
+                        </div> */}
 
                         <button class="btn bg-white" type="submit">Criar Playlist</button>
 

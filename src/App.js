@@ -10,6 +10,7 @@ import AlterarCadastro from './Componentes/AlterarCadastro/AlterarCadastro'
 import ListarMusicas from './Componentes/Playlist/ListarMusicas'
 import CriarPlaylist from './Componentes/Playlist/CriarPlaylist'
 import PlaylistDoUser from './Componentes/Playlist/PlaylistDoUser'
+import EditarPlaylist from './Componentes/Playlist/EditarPlaylist'
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
         <Route path="/CriarPlaylist" element={<CriarPlaylist />}></Route>
 
         <Route path="/ListarMusicas" element={<ListarMusicas />}></Route>
+
+        <Route path="/EditarPlaylist/:id" element={<EditarPlaylist />}></Route>
 
       </Routes>
     </Router>

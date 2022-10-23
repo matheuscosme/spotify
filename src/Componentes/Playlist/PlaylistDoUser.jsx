@@ -5,31 +5,56 @@ import { useParams } from 'react-router-dom'
 import Player from './Player';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 function PlaylistDoUser() { 
 
     const {id} = useParams();
-    const [usuario, setUsuario] = useState();
-    var srcImg = "../img/" + id + ".jpg";
+    var srcImg = "../img/user/" + id + ".jpg";
+    var idMusicas = [];
     var musicas = [];
-    const [playlists, setPlaylists] = useState([]);
 
-    useEffect(() => {
-        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-        setUsuario(usuarioLogado);
-    }, [])
+
+
+    const [playlists, setPlaylist] = useState([]);
 
     useEffect( () => {
-        axios.get('http://localhost:3001/playlistsDeUsuarios')
-            .then((res) =>setPlaylists(res.data) )
+        axios.get('http://localhost:3001/playlistsDeUsuarios/')
+            .then((res) =>setPlaylist(res.data) )
+    }, [] )
+
+    const [todasAsMusicas, setTodas] = useState([]);
+    
+    useEffect( () => {
+        axios.get('http://localhost:3001/todasAsMusicas')
+            .then((res) =>setTodas(res.data) )
     }, [] )
 
 
     for(let i = 0; i<playlists.length; i++){
-        if(playlists[i].idDoUsuario == usuario.id && playlists[i].id == id){
+        if(playlists[i].id == id){
             var nomeDoArtista = playlists[i].nome;
-            musicas = playlists[i].musicas
+            for(let j=0; j<playlists[i].musicas.length;j++){
+                idMusicas.push(playlists[i].musicas[j].idDaMusica)
+            }
+            
         }
     }
+
+    for (let c =0; c<todasAsMusicas.length;c++){
+        for (let x = 0; x<idMusicas.length; x++){
+            if(todasAsMusicas[c].id == idMusicas[x]){
+                musicas.push(todasAsMusicas[c])
+            }
+        }
+
+    }
+    console.log("id musicas: " + idMusicas)
+    console.log("nome: " + nomeDoArtista)
+    console.log("objetos musica: " + JSON.stringify(musicas))
+
+
+    
+
 
   
     return(
@@ -37,6 +62,7 @@ function PlaylistDoUser() {
             <div className='musicas'>
                 <div className='player'>
                     <p>{nomeDoArtista}</p>
+                    <Link to = {"/EditarPlaylist/" + id}> Editar Playlist</Link>
                 <img src={srcImg}/>
                     {musicas.map(musica => <Player nome={musica.nome} endereco={musica.endereco}/>)}
                 </div>

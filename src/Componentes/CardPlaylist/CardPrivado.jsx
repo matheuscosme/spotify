@@ -14,7 +14,7 @@ return(
                     <tbody>
                         <tr>
                             <td>
-                                <Link to = {"/PlaylistDoUser/" + id}> <img src={"../img/" + id + ".jpg"}/></Link>
+                                <Link to = {"/PlaylistDoUser/" + id}> <img src={"../img/user/" + id + ".jpg"}/></Link>
                                 <h3>{nome}</h3>
                             </td>
                         </tr>

@@ -1,30 +1,27 @@
 {
-
   "todasAsMusicas": [
     {
-      "id":"1",
-      "nome":"Is this Love",
-      "artista":"Bob Marley",
-      "endereco":"../musica/bob1.mp3"
+      "id": 1,
+      "nome": "Is this Love",
+      "artista": "Bob Marley",
+      "endereco": "../musica/bob1.mp3"
     },
     {
-      "id":"2",
-      "nome":"One Love",
-      "artista":"Bob Marley",
-      "endereco":"../musica/bob2.mp3"
+      "id": 2,
+      "nome": "One Love",
+      "artista": "Bob Marley",
+      "endereco": "../musica/bob2.mp3"
     },
     {
-      "id":"3",
-      "nome":"The Trooper",
-      "artista":"Iron Maiden",
-      "endereco":"../musica/iron1.mp3"
+      "id": 3,
+      "nome": "The Trooper",
+      "artista": "Iron Maiden",
+      "endereco": "../musica/iron1.mp3"
     }
-
   ],
-
   "playlists": [
     {
-      "id": "1",
+      "id": 1,
       "estilo": "Metal",
       "nome": "Iron Maiden",
       "musicas": [
@@ -35,7 +32,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": 2,
       "estilo": "Reggae",
       "nome": "Bob Marley",
       "musicas": [
@@ -50,42 +47,43 @@
       ]
     }
   ],
-
   "playlistsDeUsuarios": [
     {
-      "id":"3",
+      "id": 1,
       "idDoUsuario": 11,
-      "estilo": "Usuário",
+      "estilo": "Matheus",
       "nome": "Personalizada",
       "musicas": [
         {
-          "nome": "Is this Love",
-          "endereco": "../musica/bob1.mp3"
-        },
-        {
-          "nome": "The Trooper",
-          "endereco": "../musica/iron1.mp3"
+          "idDaMusica": 1
         }
       ]
     },
     {
-      "id":"4",
+      "id": 2,
       "idDoUsuario": 11,
-      "estilo": "Usuário",
+      "estilo": "Matheus",
       "nome": "Playlist",
       "musicas": [
         {
-          "nome": "Is this Love",
-          "endereco": "../musica/bob1.mp3"
+          "idDaMusica":1
         },
         {
-          "nome": "The Trooper",
-          "endereco": "../musica/iron1.mp3"
+          "idDaMusica":3
         }
       ]
+    }, 
+    {
+      "idDoUsuario": "10",
+      "estilo": "Teste",
+      "nome": "Musicas",
+      "musicas": [
+        {"idDaMusica": 1},
+        {"idDaMusica": 2}
+      ],
+      "id": 4
     }
   ],
-
   "users": [
     {
       "id": 10,
@@ -94,8 +92,8 @@
       "senha": "123"
     },
     {
-      "nome": "Matheus1",
-      "email": "matheus1@gmail.com",
+      "nome": "Matheus",
+      "email": "matheus@gmail.com",
       "senha": "123",
       "id": 11
     },

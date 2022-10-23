@@ -33,9 +33,14 @@ function Home() {
         playlistsPublicas.push(playlists[i]);
     }
 
+
     for(let i = 0; i<playlistsDeUser.length; i++){
-        playlistsPrivadas.push(playlistsDeUser[i]);
+        if(playlistsDeUser[i].idDoUsuario == usuario.id){
+            playlistsPrivadas.push(playlistsDeUser[i]);
+        }
     }
+
+
 
     return(
 <>

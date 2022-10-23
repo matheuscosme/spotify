@@ -18,6 +18,7 @@ function Playlist() {
             .then((res) =>setPlaylists(res.data) )
     }, [] )
 
+    console.log(playlists)
 
     for(let i = 0; i<playlists.length; i++){
         if(playlists[i].id == id){
