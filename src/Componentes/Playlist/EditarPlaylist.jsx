@@ -73,8 +73,9 @@ function EditarPlaylist() {
     
 
     function adicionarNaPlaylist(){
-        axios.post(`http://localhost:3001/playlistsDeUsuarios/${id}`,
-            playlistObject)
+        let algo = [{"idDaMusica":1},{"idDaMusica":2},{"idDaMusica":idAdicionar}]
+        axios.patch(`http://localhost:3001/playlistsDeUsuarios/${id}`, {musicas:algo})
+            .then((res) =>console.log(res.data))
     }
 
   

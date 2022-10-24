@@ -56,6 +56,12 @@
       "musicas": [
         {
           "idDaMusica": 1
+        },
+        {
+          "idDaMusica": 2
+        },
+        {
+          "idDaMusica": "3"
         }
       ]
     },
