@@ -49,10 +49,10 @@
   ],
   "playlistsDeUsuarios": [
     {
-      "id": 1,
+      "id": 2,
       "idDoUsuario": 11,
       "estilo": "Matheus",
-      "nome": "Personalizada",
+      "nome": "Playlist",
       "musicas": [
         {
           "idDaMusica": 1
@@ -60,28 +60,18 @@
       ]
     },
     {
-      "id": 2,
-      "idDoUsuario": 11,
-      "estilo": "Matheus",
-      "nome": "Playlist",
-      "musicas": [
-        {
-          "idDaMusica":1
-        },
-        {
-          "idDaMusica":3
-        }
-      ]
-    }, 
-    {
+      "id": 4,
       "idDoUsuario": "10",
       "estilo": "Teste",
       "nome": "Musicas",
       "musicas": [
-        {"idDaMusica": 1},
-        {"idDaMusica": 2}
-      ],
-      "id": 4
+        {
+          "idDaMusica": 1
+        },
+        {
+          "idDaMusica": 2
+        }
+      ]
     }
   ],
   "users": [

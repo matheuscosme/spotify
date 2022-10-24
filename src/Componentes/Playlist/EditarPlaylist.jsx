@@ -8,36 +8,73 @@ import { useState, useEffect } from 'react';
 import ListarMusicas from './ListarMusicas';
 function EditarPlaylist() { 
 
-    let todasAsMusicas = [];
+
+    let lista = [];
     let musicasDaPlay = [];
+    let idMusicasDisponiveis = [];
+    let musicasDisponiveis = [];
+    let todosIds = [];
+    let nomeDaPlaylist = [];
+    let playlistObject = [];
     const {id} = useParams();
-    const [nomeDaPlaylist, setNomeDaPlaylist] = useState()
     const [nomeBusca, setNomeBusca] = useState()
-    const [musicasParaAdicionar, setMusicaParaAdicionar] = useState()
-    const [usuario, setUsuario] = useState();
-    const [listaDeMusicas, setLista] = useState([]);
-    const [musicasDaPlaylist, setMusicasDaPlay] = useState([]);
+    const [idAdicionar, setIdAdicionar] = useState()
 
 
+    const [playlist, setPlaylist] = useState([]);
+
+    useEffect( () => {
+        axios.get('http://localhost:3001/playlistsDeUsuarios')
+            .then((res) =>setPlaylist(res.data) )
+    }, [] )
+
+    
+    const [todasAsMusicas, setTodas] = useState([]);
 
     useEffect( () => {
         axios.get('http://localhost:3001/todasAsMusicas')
-            .then((res) =>setLista(res.data) )
+            .then((res) =>setTodas(res.data) )
     }, [] )
 
 
-    useEffect( () => {
-        axios.get(`http://localhost:3001/playlistsDeUsuarios/${id}`)
-            .then((res) =>setMusicasDaPlay(res.data) )
-    }, [] )
+    
+    for (let i =0; i<playlist.length; i++){
+        if(playlist[i].id == id){
+            nomeDaPlaylist = playlist[i].nome
+            playlistObject = playlist[i]
+            for (let j =0;j<playlist[i].musicas.length;j++){
+                lista.push(playlist[i].musicas[j].idDaMusica)
+            }
+        }
+    }
+ 
+
+    for (let c = 0; c<todasAsMusicas.length;c++){
+        todosIds.push(todasAsMusicas[c].id)
+        for (let x = 0; x<lista.length; x++){
+            if(todasAsMusicas[c].id == lista[x]){
+                musicasDaPlay.push(todasAsMusicas[c])
+            }
+        }
+    }
+
+    idMusicasDisponiveis = todosIds.filter(i => !lista.includes(i));
 
 
-    let lista = musicasDaPlaylist.musicas;
-    console.log("musicas: " + JSON.stringify(lista));
+    for (let a = 0; a<todasAsMusicas.length;a++){
+        for(let b = 0; b<idMusicasDisponiveis.length;b++){
+            if(todasAsMusicas[a].id == idMusicasDisponiveis[b]){
+                musicasDisponiveis.push(todasAsMusicas[a])
+            }
+        }
+    }
+
+
+    
 
     function adicionarNaPlaylist(){
-        axios.put(`http://localhost:3001/playlistsDeUsuarios/${id}`,
-            {musicas:musicasParaAdicionar})
+        axios.post(`http://localhost:3001/playlistsDeUsuarios/${id}`,
+            playlistObject)
     }
 
   
@@ -47,21 +84,28 @@ function EditarPlaylist() {
 
             <div class="row">
                 <div class="col-sm p-3">
+                    <h2>Editar {nomeDaPlaylist}</h2>
                     <form action="" onSubmit={adicionarNaPlaylist}>
-
-                        <label class="form-label">Nome da Playlist</label>
-                        <input name='playlist' class="form-control"
-                        onChange={(e) => setNomeDaPlaylist(e.target.value)} value={nomeDaPlaylist} />
 
                         <label class="form-label">Buscar Músicas</label>
                         <input name='buscar' class="form-control"
                         onChange={(e) => setNomeBusca(e.target.value)} value={nomeBusca} />
                          
                         <div className='musicas'>
-                                {todasAsMusicas.map(musica => <ListarMusicas nomeDaMusica={musica.nome}/>)}
+                            <label htmlFor="">Músicas Disponíveis</label>
+                                {musicasDisponiveis.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} nomeDoArtista={musica.artista}/>)}
                         </div>
 
-                        <button class="btn bg-white" type="submit">Adicionar Músicas</button>
+                        <label class="form-label">Id da Música</label>
+                        <input name='playlist' class="form-control"
+                        onChange={(e) => setIdAdicionar(e.target.value)} value={idAdicionar} />
+
+                        <button class="btn bg-white" type="submit">Adicionar Música</button>
+
+                        <div className='musicas'>
+                            <label htmlFor="">Musicas na Playlist</label>
+                                {musicasDaPlay.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} nomeDoArtista={musica.artista}/>)}
+                        </div>
 
                     </form>
                     </div>

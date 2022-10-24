@@ -46,8 +46,9 @@ function PlaylistDoUser() {
                 musicas.push(todasAsMusicas[c])
             }
         }
-
     }
+
+    
     console.log("id musicas: " + idMusicas)
     console.log("nome: " + nomeDoArtista)
     console.log("objetos musica: " + JSON.stringify(musicas))

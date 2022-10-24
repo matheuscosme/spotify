@@ -1,13 +1,13 @@
 import React from 'react'
 import Styles from './Playlist.modules.css'
 
-function ListarMusicas({nomeDaMusica}) { 
+function ListarMusicas({id, nomeDaMusica, nomeDoArtista}) { 
 
   
     return(
         <>
         <div className='listagem'>
-            <input type="checkbox">{nomeDaMusica}</input>
+            <p>{id} - {nomeDaMusica} - {nomeDoArtista}</p>
         </div>
     </>
     )
