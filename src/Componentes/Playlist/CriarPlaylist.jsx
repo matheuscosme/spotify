@@ -1,4 +1,3 @@
-import ReactAudioPlayer from 'react-audio-player'
 import React from 'react'
 import styles from './Playlist.modules.css'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -19,16 +18,6 @@ function CriarPlaylist() {
         setUsuario(usuarioLogado);
     }, [])
 
-
-    // const [listaDeMusicas, setLista] = useState([]);
-
-    // useEffect( () => {
-    //     axios.get('http://localhost:3001/todasAsMusicas')
-    //         .then((res) =>setLista(res.data) )
-    // }, [] )
-
-
-    // musicas = listaDeMusicas;
 
     function salvarPlaylist(){
         axios.post('http://localhost:3001/playlistsDeUsuarios',{idDoUsuario:usuario.id,nome:nomeDaPlaylist, estilo:usuario.nome, musicas:listaVazia})

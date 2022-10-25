@@ -169,7 +169,7 @@ function Cadastro() {
                                     <button class="btn bg-white" type="submit">Inscreva-se</button>
 
                                     <div id="teste">
-                                        {sucesso && <p><Link to="/">Página inicial</Link></p>}
+                                        {sucesso && <p><Link to="/Login">Fazer Login</Link></p>}
                                     </div>
 
 

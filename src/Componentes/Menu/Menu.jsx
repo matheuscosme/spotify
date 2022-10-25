@@ -21,6 +21,7 @@ function Menu() {
                 <Link to="/" className="navbar-brand">
                     <img id="logo" src="../img/Spotify2.png" alt="spotify"/>
                 </Link>
+                {usuario && <p>Olá, {usuario.nome}</p>}
                   
                 <ul className="nav-list">
                     {!usuario && 

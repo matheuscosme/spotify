@@ -1,8 +1,5 @@
-import ReactAudioPlayer from 'react-audio-player'
 import React from 'react'
-import styles from './Playlist.modules.css'
-import { useParams } from 'react-router-dom'
-import Player from './Player';
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ListarMusicas from './ListarMusicas';
@@ -22,6 +19,7 @@ function EditarPlaylist() {
     const [idAdicionar, setIdAdicionar] = useState()
     const [idDeletar, setIdDeletar] = useState()
     const [novoArray, setNovo] = useState([]);
+    const navigate = useNavigate();
 
 
     const [playlist, setPlaylist] = useState([]);
@@ -29,7 +27,6 @@ function EditarPlaylist() {
     useEffect( () => {
         axios.get('http://localhost:3001/playlistsDeUsuarios')
             .then((res) =>setPlaylist(res.data) )
-            console.log("effect 1")
     }, [] )
 
     
@@ -38,7 +35,6 @@ function EditarPlaylist() {
     useEffect( () => {
         axios.get('http://localhost:3001/todasAsMusicas')
             .then((res) =>setTodas(res.data) )
-            console.log("effect 2")
         }, [] )
         
         
@@ -82,8 +78,6 @@ function EditarPlaylist() {
                     console.log(novoArray)
                 }
             }
-            // console.log(musicasDisponiveis)
-            // console.log("dentro da func: " + buscaAtiva)
             setNovo(array);
         }
     }
@@ -109,7 +103,8 @@ function EditarPlaylist() {
         <>
             <div class="row">
                 <div class="col-sm p-3">
-                    <h2>Editar {nomeDaPlaylist}</h2>
+                    <h2>Editar  <Link to = {"/PlaylistDoUser/" + id}> {nomeDaPlaylist} </Link> </h2> 
+                    
 
                         <label class="form-label">Buscar Músicas</label>
 
