@@ -29,7 +29,6 @@ function PlaylistDoUser() {
             .then((res) =>setTodas(res.data) )
     }, [] )
 
-
     for(let i = 0; i<playlists.length; i++){
         if(playlists[i].id == id){
             var nomeDoArtista = playlists[i].nome;
@@ -65,7 +64,7 @@ function PlaylistDoUser() {
                     <p>{nomeDoArtista}</p>
                     <Link to = {"/EditarPlaylist/" + id}> Editar Playlist</Link>
                 <img src={srcImg}/>
-                    {musicas.map(musica => <Player nome={musica.nome} endereco={musica.endereco}/>)}
+                    {musicas.map(musica => <Player nome={musica.nome} endereco={musica.endereco} />)}
                 </div>
             </div>
     </>

@@ -2,9 +2,12 @@ import ReactAudioPlayer from 'react-audio-player'
 import React from 'react'
 import styles from './Playlist.modules.css'
 import { useParams } from 'react-router-dom'
+import { Button } from 'bootstrap'
+import axios from 'axios'
 function Player({nome, endereco}) { 
 
-  
+    
+
     return(
         <>
         <div>
