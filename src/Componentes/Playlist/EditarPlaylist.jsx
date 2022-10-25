@@ -17,11 +17,11 @@ function EditarPlaylist() {
     let nomeDaPlaylist = [];
     let adicionar = [];
     let removido = [];
-    let listaDeNomes = [];
     const {id} = useParams();
     const [nomeBusca, setNomeBusca] = useState()
     const [idAdicionar, setIdAdicionar] = useState()
     const [idDeletar, setIdDeletar] = useState()
+    const [novoArray, setNovo] = useState([]);
 
 
     const [playlist, setPlaylist] = useState([]);
@@ -29,6 +29,7 @@ function EditarPlaylist() {
     useEffect( () => {
         axios.get('http://localhost:3001/playlistsDeUsuarios')
             .then((res) =>setPlaylist(res.data) )
+            console.log("effect 1")
     }, [] )
 
     
@@ -37,55 +38,55 @@ function EditarPlaylist() {
     useEffect( () => {
         axios.get('http://localhost:3001/todasAsMusicas')
             .then((res) =>setTodas(res.data) )
+            console.log("effect 2")
         }, [] )
         
         
-        
-        for (let i =0; i<playlist.length; i++){
-            if(playlist[i].id == id){
-                nomeDaPlaylist = playlist[i].nome
-                for (let j =0;j<playlist[i].musicas.length;j++){
-                    lista.push(playlist[i].musicas[j].idDaMusica)
-                }
+    
+    for (let i =0; i<playlist.length; i++){
+        if(playlist[i].id == id){
+            nomeDaPlaylist = playlist[i].nome
+            for (let j =0;j<playlist[i].musicas.length;j++){
+                lista.push(playlist[i].musicas[j].idDaMusica)
             }
         }
-        
-        
-        for (let c = 0; c<todasAsMusicas.length;c++){
-            todosIds.push(todasAsMusicas[c].id)
-            for (let x = 0; x<lista.length; x++){
-                if(todasAsMusicas[c].id == lista[x]){
-                    musicasDaPlay.push(todasAsMusicas[c])
-                }
+    }
+    
+    
+    for (let c = 0; c<todasAsMusicas.length;c++){
+        todosIds.push(todasAsMusicas[c].id)
+        for (let x = 0; x<lista.length; x++){
+            if(todasAsMusicas[c].id == lista[x]){
+                musicasDaPlay.push(todasAsMusicas[c])
             }
         }
-        
-        
-        idMusicasDisponiveis = todosIds.filter(i => !lista.includes(i));
-        
-        for (let a = 0; a<todasAsMusicas.length;a++){
-            for(let b = 0; b<idMusicasDisponiveis.length;b++){
-                if(todasAsMusicas[a].id == idMusicasDisponiveis[b]){
-                    musicasDisponiveis.push(todasAsMusicas[a])
-                }
+    }
+    
+    
+    idMusicasDisponiveis = todosIds.filter(i => !lista.includes(i));
+    
+    for (let a = 0; a<todasAsMusicas.length;a++){
+        for(let b = 0; b<idMusicasDisponiveis.length;b++){
+            if(todasAsMusicas[a].id == idMusicasDisponiveis[b]){
+                musicasDisponiveis.push(todasAsMusicas[a])
             }
         }
+    }
         
     function buscar(){
-        let novoArray = [];
+        let array = []
         if(nomeBusca != null){
             for(let l=0;l<musicasDisponiveis.length;l++){
                 if(musicasDisponiveis[l].nome.toLowerCase().indexOf(nomeBusca.toLowerCase())>-1){
-                    novoArray.push(musicasDisponiveis[l])
+                    array.push(musicasDisponiveis[l])
                     console.log(novoArray)
                 }
             }
-            musicasDisponiveis = novoArray;
-            console.log(musicasDisponiveis)
+            // console.log(musicasDisponiveis)
+            // console.log("dentro da func: " + buscaAtiva)
+            setNovo(array);
         }
     }
-
-    
     
     function adicionarNaPlaylist(){
         for(let d=0;d<lista.length;d++){
@@ -103,50 +104,56 @@ function EditarPlaylist() {
         }
         axios.patch(`http://localhost:3001/playlistsDeUsuarios/${id}`, {musicas:removido})
     }
-
   
     return(
         <>
-
-
             <div class="row">
                 <div class="col-sm p-3">
                     <h2>Editar {nomeDaPlaylist}</h2>
+
                         <label class="form-label">Buscar Músicas</label>
+
                         <input name='buscar' class="form-control"
                         onChange={(e) => setNomeBusca(e.target.value)} value={nomeBusca} />
                         <button onClick={buscar}>Buscar</button>
+                            {novoArray.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} 
+                            nomeDoArtista={musica.artista}/>)}
+                    <br /><br />
                     <form action="" onSubmit={adicionarNaPlaylist}>
-
-                         
                         <div className='musicas'>
+                            <label >ADICIONAR MÚSICAS</label> <br />
+
                             <label htmlFor="">Músicas Disponíveis</label>
-                                {musicasDisponiveis.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} nomeDoArtista={musica.artista}/>)}
-                        </div>
+                                {musicasDisponiveis.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} 
+                                nomeDoArtista={musica.artista}/>)}
 
+                            <label class="form-label">Id da Música</label>
+                            <input name='playlist' class="form-control"
+                            onChange={(e) => setIdAdicionar(e.target.value)} value={idAdicionar} />
+
+                            <button class="btn bg-white" type="submit">Adicionar Música</button> <br />
+                        </div>
+                    </form>
+
+                    <br />
+
+                    <div className='musicas'>
+                        <label >REMOVER MÚSICAS</label> <br />
+
+                        <label htmlFor="">Musicas na Playlist</label>
+                            {musicasDaPlay.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} 
+                            nomeDoArtista={musica.artista} naPlay={true} idDaPlay={id} musicasNaPlay={lista}/>)}
+
+                        <form action='' onSubmit={deletar}>
                         <label class="form-label">Id da Música</label>
-                        <input name='playlist' class="form-control"
-                        onChange={(e) => setIdAdicionar(e.target.value)} value={idAdicionar} />
+                            <input name='playlist' class="form-control"
+                            onChange={(e) => setIdDeletar(e.target.value)} value={idDeletar} />
 
-                        <button class="btn bg-white" type="submit">Adicionar Música</button>
-
-                        <div className='musicas'>
-                            <label htmlFor="">Musicas na Playlist</label>
-                                {musicasDaPlay.map(musica => <ListarMusicas id={musica.id} nomeDaMusica={musica.nome} 
-                                nomeDoArtista={musica.artista} naPlay={true} idDaPlay={id} musicasNaPlay={lista}/>)}
-                        </div>
-                    </form>
-                    <form action='' onSubmit={deletar}>
-                    <label class="form-label">Id da Música</label>
-                        <input name='playlist' class="form-control"
-                        onChange={(e) => setIdDeletar(e.target.value)} value={idDeletar} />
-
-                        <button class="btn bg-white" type="submit">Deletar Música</button>
-                    </form>
+                            <button class="btn bg-white" type="submit">Deletar Música</button>
+                        </form>
                     </div>
+                </div>
             </div>
-
-
     </>
     )
 }

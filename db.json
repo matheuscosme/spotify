@@ -55,10 +55,10 @@
       "nome": "Playlist",
       "musicas": [
         {
-          "idDaMusica": 1
+          "idDaMusica": 2
         },
         {
-          "idDaMusica": 2
+          "idDaMusica": 3
         }
       ]
     },
@@ -75,6 +75,20 @@
           "idDaMusica": 2
         }
       ]
+    },
+    {
+      "idDoUsuario": 11,
+      "nome": "Nova",
+      "estilo": "Matheus",
+      "musicas": [
+        {
+          "idDaMusica": 2
+        },
+        {
+          "idDaMusica": 3
+        }
+      ],
+      "id": 5
     }
   ],
   "users": [
