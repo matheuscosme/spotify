@@ -73,7 +73,7 @@ function Cadastro() {
 
                             <label htmlFor="email" class="form-label">Qual é o seu e-mail?</label>
                             <input type="email" name='email' class="form-control" required id="email" aria-describedby="emailHelp"
-                                placeholder="digite seu e-mail" onChange={(e) => setEmail(e.target.value)} value={nome} />
+                                placeholder="digite seu e-mail" onChange={(e) => setEmail(e.target.value)}/>
 
                             <label htmlFor="confirmarEmail" class="form-label">Confirme seu e-mail</label>
                             <input type="email" name='confirmarEmail' placeholder="Insira o e-mail novamente" class="form-control" required
@@ -86,9 +86,7 @@ function Cadastro() {
 
                             <label htmlFor="nome" class="form-label">Como devemos chamar você?</label>
                             <input type="text" placeholder="Insira um nome de perfil" class="form-control" required
-                                id="nome" aria-describedby="emailHelp" onChange={(e) => setNome(e.target.value)} />
-                            <div id="emailHelp" class="form-text" style={{ color: 'gray' }}>Isso aparece no seu perfil.
-                            </div>
+                                id="nome" onChange={(e) => setNome(e.target.value)} />
 
                             <label htmlFor="nascimento" class="form-label">Qual a sua data de nascimento?</label>
 

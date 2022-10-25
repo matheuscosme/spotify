@@ -119,6 +119,26 @@
         }
       ],
       "id": 5
+    },
+    {
+      "idDoUsuario": 13,
+      "nome": "Minha",
+      "estilo": "Cosme",
+      "musicas": [
+        {
+          "idDaMusica": 4
+        },
+        {
+          "idDaMusica": 3
+        },
+        {
+          "idDaMusica": 6
+        },
+        {
+          "idDaMusica": 8
+        }
+      ],
+      "id": 6
     }
   ],
   "users": [
@@ -139,6 +159,12 @@
       "email": "roberio@gmail.com",
       "senha": "1234",
       "id": 12
+    },
+    {
+      "nome": "M Cosme",
+      "email": "mcosme@gmail.com",
+      "senha": "123",
+      "id": 13
     }
   ]
 }
