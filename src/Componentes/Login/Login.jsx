@@ -5,6 +5,7 @@ import { useState } from 'react'
 import './Login.modules.css'
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Login() {
 
@@ -13,7 +14,7 @@ function Login() {
     const navigate = useNavigate();
     localStorage.clear();
 
-
+    
     function handleSubmit(e) {
 
         e.preventDefault()
@@ -28,6 +29,7 @@ function Login() {
                 
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
                 navigate('/');
+                window.location.reload(false)
             })
         
 

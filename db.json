@@ -133,17 +133,7 @@
       "idDoUsuario": 11,
       "nome": "Mood",
       "estilo": "Matheus",
-      "musicas": [
-        {
-          "idDaMusica": 1
-        },
-        {
-          "idDaMusica": 7
-        },
-        {
-          "idDaMusica": 6
-        }
-      ],
+      "musicas": [],
       "id": 5
     },
     {
@@ -176,6 +166,13 @@
         }
       ],
       "id": 7
+    },
+    {
+      "idDoUsuario": 14,
+      "nome": "Nova",
+      "estilo": "User",
+      "musicas": [],
+      "id": 8
     }
   ],
   "users": [
@@ -208,6 +205,12 @@
       "email": "novo@gmail.com",
       "senha": "147",
       "id": 14
+    },
+    {
+      "nome": "Marcelo",
+      "email": "marcelo@teste.com",
+      "senha": "123",
+      "id": 15
     }
   ]
 }

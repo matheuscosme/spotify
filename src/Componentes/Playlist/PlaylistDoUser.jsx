@@ -14,7 +14,6 @@ function PlaylistDoUser() {
     var musicas = [];
 
 
-
     const [playlists, setPlaylist] = useState([]);
 
     useEffect( () => {
@@ -47,24 +46,16 @@ function PlaylistDoUser() {
         }
     }
 
-    
-    console.log("id musicas: " + idMusicas)
-    console.log("nome: " + nomeDoArtista)
-    console.log("objetos musica: " + JSON.stringify(musicas))
-
-
-    
-
-
   
     return(
         <>
             <div className='musicas'>
                 <div className='player'>
                     <p>{nomeDoArtista}</p>
-                    <Link to = {"/EditarPlaylist/" + id}> Editar Playlist</Link>
+                    <Link to = {"/EditarPlaylist/" + id}> Adicionar Músicas</Link>
                 <img src={srcImg}/>
-                    {musicas.map(musica => <Player nome={musica.nome} endereco={musica.endereco} />)}
+                    {musicas.map(musica => <Player id = {musica.id} nome={musica.nome} endereco={musica.endereco}
+                                                musicasNaPlay = {idMusicas} idDaPlay = {id} user={true}/>)}
                 </div>
             </div>
     </>

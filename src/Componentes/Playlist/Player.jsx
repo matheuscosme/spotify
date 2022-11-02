@@ -4,14 +4,25 @@ import styles from './Playlist.modules.css'
 import { useParams } from 'react-router-dom'
 import { Button } from 'bootstrap'
 import axios from 'axios'
-function Player({nome, endereco}) { 
+function Player({id, nome, endereco, musicasNaPlay, idDaPlay, user}) { 
 
-    
+
+    function deletar(){
+        let permanecem = []
+        for(let i=0;i<musicasNaPlay.length;i++){
+            if(musicasNaPlay[i] != id){
+                permanecem.push({"idDaMusica":(musicasNaPlay[i])})
+            }
+        }
+        axios.patch(`http://localhost:3001/playlistsDeUsuarios/${idDaPlay}`, {musicas:permanecem})
+        window.location.reload(false)
+    }
 
     return(
         <>
         <div>
-            <p>{nome}</p>
+            <p>{nome}  { user && <button class="btn btn-danger"
+                    type="submit" onClick={deletar}>X</button> } </p>
                 <ReactAudioPlayer src={endereco}
                     controls />
         </div>
