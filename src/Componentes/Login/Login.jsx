@@ -19,10 +19,10 @@ function Login() {
 
         e.preventDefault()
 
-        axios.get(`http://localhost:3001/users?email=${email}`)
+        axios.get(`http://localhost:3001/users/${email}`)
             .then((res)=> {
-                const usuario = res.data[0];
-
+                const usuario = res.data;
+                console.log(usuario);
                 if(usuario.senha !== senha){
                     return
                 }
