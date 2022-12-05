@@ -9,42 +9,34 @@ import { Link } from "react-router-dom";
 function PlaylistDoUser() { 
 
     const {id} = useParams();
-    var srcImg = "../img/user/" + id + ".jpg";
-    var idMusicas = [];
-    var musicas = [];
+    var srcImg = "../img/user/" + 1 + ".jpg";
+    const [nomeDoArtista, setArtista] = useState();
+    const [musicas, setMusicas] = useState([]);
+    const [musicasId, setMusicasId] = useState([]);
 
-
-    const [playlists, setPlaylist] = useState([]);
 
     useEffect( () => {
-        axios.get('http://localhost:3001/playlistsDeUsuarios/')
-            .then((res) =>setPlaylist(res.data) )
-    }, [] )
-
-    const [todasAsMusicas, setTodas] = useState([]);
-    
-    useEffect( () => {
-        axios.get('http://localhost:3001/todasAsMusicas')
-            .then((res) =>setTodas(res.data) )
-    }, [] )
-
-    for(let i = 0; i<playlists.length; i++){
-        if(playlists[i].id == id){
-            var nomeDoArtista = playlists[i].nome;
-            for(let j=0; j<playlists[i].musicas.length;j++){
-                idMusicas.push(playlists[i].musicas[j].idDaMusica)
-            }
-            
-        }
-    }
-
-    for (let c =0; c<todasAsMusicas.length;c++){
-        for (let x = 0; x<idMusicas.length; x++){
-            if(todasAsMusicas[c].id == idMusicas[x]){
-                musicas.push(todasAsMusicas[c])
-            }
-        }
-    }
+        axios.get(`http://localhost:3001/playlistsDeUsuarios/${id}`)
+            .then((res) =>{
+                const playlist = res.data;
+                setArtista(playlist.nome);
+                setMusicasId(playlist.musicas);                
+                axios.get(`http://localhost:3001/todasAsMusicas`)
+                .then((res) =>{
+                    const todasAsMusicas = res.data;
+                    var musicasAux = [];
+                    for (let i=0; i< playlist.musicas.length; i++){
+                        for (let j= 0; j< todasAsMusicas.length; j++){
+                            if(playlist.musicas[i].idDaMusica === todasAsMusicas[j]._id){
+                                musicasAux.push(todasAsMusicas[j]);
+                            }
+                        }
+                    }
+                    setMusicas(musicasAux);
+                })
+            })
+        }, [] )
+        
 
   
     return(
@@ -54,8 +46,8 @@ function PlaylistDoUser() {
                     <p>{nomeDoArtista}</p>
                     <Link to = {"/EditarPlaylist/" + id}> Adicionar Músicas</Link>
                 <img src={srcImg}/>
-                    {musicas.map(musica => <Player id = {musica.id} nome={musica.nome} endereco={musica.endereco}
-                                                musicasNaPlay = {idMusicas} idDaPlay = {id} user={true}/>)}
+                    {musicas.map(musica => <Player id = {musica._id} nome={musica.nome} endereco={musica.endereco}
+                                                    idDaPlay = {id} user={true}/>)}
                 </div>
             </div>
     </>

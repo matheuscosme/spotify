@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Card({estilo,nome,id}){
+function Card({estilo,nome,id, img}){
 
 return(
     <div className="tabela">
@@ -14,7 +14,7 @@ return(
                     <tbody>
                         <tr>
                             <td>
-                                <Link to = {"/Playlist/" + id}> <img src={"../img/" + id + ".jpg"}/></Link>
+                                <Link to = {"/Playlist/" + id}> <img src={img}/></Link>
                                 <h3>{nome}</h3>
                             </td>
                         </tr>

@@ -8,25 +8,21 @@ import { useState, useEffect } from 'react';
 function Playlist() { 
 
     const {id} = useParams();
-    var srcImg = "../img/" + id + ".jpg";
-    var musicas = [];
-
-    const [playlists, setPlaylists] = useState([]);
+    const [musicas, setMusicas] = useState([]);
+    const [nomeDoArtista, setArtista] = useState();
+    const [srcImg, setImg] = useState();
 
     useEffect( () => {
-        axios.get('http://localhost:3001/playlists')
-            .then((res) =>setPlaylists(res.data) )
-    }, [] )
-
-    console.log(playlists)
-
-    for(let i = 0; i<playlists.length; i++){
-        if(playlists[i].id == id){
-            var nomeDoArtista = playlists[i].nome;
-            musicas = playlists[i].musicas
-        }
-    }
-
+        axios.get(`http://localhost:3001/playlists/${id}`)
+            .then((res) => {
+                const playlist = res.data;
+                setArtista(playlist.nome);
+                setMusicas(playlist.musicas);
+                setImg(playlist.img);
+            })
+        }, [] )
+        
+        
   
     return(
         <>

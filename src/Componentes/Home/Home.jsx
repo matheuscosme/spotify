@@ -17,6 +17,7 @@ function Home() {
     useEffect(() => {
         const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
         setUsuario(usuarioLogado);
+        console.log(usuario);
     }, [])
 
     useEffect( () => {
@@ -35,7 +36,7 @@ function Home() {
 
     if (usuario){
         for(let i = 0; i<playlistsDeUser.length; i++){
-            if(playlistsDeUser[i].idDoUsuario == usuario.id){
+            if(playlistsDeUser[i].idDoUsuario == usuario._id){
                 playlistsPrivadas.push(playlistsDeUser[i]);
             }
     }
@@ -52,7 +53,7 @@ function Home() {
             <div className='wrapper'><p>PLAYLISTS PÚBLICAS</p>
                 <br /></div>
             <div className="wrapper">
-                {playlistsPublicas.map(playlist => <Card estilo={playlist.estilo} nome={playlist.nome} id={playlist._id}/>)}          
+                {playlistsPublicas.map(playlist => <Card estilo={playlist.estilo} nome={playlist.nome} id={playlist._id} img ={playlist.img}/>)}          
             </div>
             <div className='wrapper'>
                 {usuario && <p>PLAYLISTS DE {usuario.nome}</p>}
@@ -60,7 +61,7 @@ function Home() {
             </div>
             <div className='wrapper'>
                 {usuario && 
-                        playlistsPrivadas.map(playlist => <CardPrivado estilo={playlist.estilo} nome={playlist.nome} id={playlist.id}/>)}  
+                        playlistsPrivadas.map(playlist => <CardPrivado estilo={playlist.estilo} nome={playlist.nome} id={playlist._id}/>)}  
             </div>
         </div>
         
