@@ -20,7 +20,7 @@ function CriarPlaylist() {
 
 
     function salvarPlaylist(){
-        axios.post('http://localhost:3001/playlistsDeUsuarios',{idDoUsuario:usuario.id,nome:nomeDaPlaylist, estilo:usuario.nome, musicas:listaVazia})
+        axios.post('http://localhost:3001/playlistsDeUsuarios',{idDoUsuario:usuario._id,nome:nomeDaPlaylist, estilo:usuario.nome, musicas:listaVazia})
             .then(navigate('/'))
     }
 
