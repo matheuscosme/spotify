@@ -10,7 +10,6 @@ function ListarMusicas({id, nomeDaMusica, nomeDoArtista, idDaPlay}) {
     function adicionarNaPlaylist(){
         let idDaMusica = id
         console.log(id);
-        // console.log(adicionar);
         axios.put(`http://localhost:3001/playlistsDeUsuarios/${idDaPlay}`, {idDaMusica})
         // window.location.reload(false)
     }    

@@ -6,16 +6,6 @@ import { Button } from 'bootstrap'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 function Player({id, nome, endereco, idDaPlay, user}) { 
-
-    // const [musicasNaPlay, setMusicas] = useState([]);
-
-    // useEffect( () => {
-    //     axios.get(`http://localhost:3001/playlistsDeUsuarios/${idDaPlay}`)
-    //         .then((res) => {
-    //             const playlist = res.data;
-    //             setMusicas(playlist.musicas);
-    //         })
-    // }, [] )
     
     function deletar(){
         let idDaMusica = id
