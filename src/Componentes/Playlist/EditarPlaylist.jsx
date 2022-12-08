@@ -24,8 +24,9 @@ function EditarPlaylist() {
         
         
     function buscar(){
+        let _id = id;
         if(nomeBusca != null){
-            axios.get(`http://localhost:3001/todasAsMusicas/${nomeBusca}`)
+            axios.get(`http://localhost:3001/todasAsMusicas/${id}/${nomeBusca}`)
             .then((res) =>setNovo(res.data) )
             }
         }

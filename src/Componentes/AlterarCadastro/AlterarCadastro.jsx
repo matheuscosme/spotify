@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function AlterarCadastro() {
 
-    const [id, setId] = useState()
+    const [_id, setId] = useState()
     const [nome, setNome] = useState()
     const [confirmarEmail, setconfirmarEmail] = useState()
     const [email, setEmail] = useState()
@@ -21,7 +21,7 @@ function AlterarCadastro() {
         setNome(usuario.nome);
         setEmail(usuario.email);
         setSenha(usuario.senha);
-        setId(usuario.id);
+        setId(usuario._id);
     }, [])
 
     function cadastrando(e) {
@@ -30,10 +30,11 @@ function AlterarCadastro() {
 
 
         const user = {nome,email,senha}
+        const userLocal = {nome,email,senha, _id}
 
-        axios.put(`http://localhost:3001/users/${id}`, user)
+        axios.put(`http://localhost:3001/users/${_id}`, user)
             .then( (res) => {
-                localStorage.setItem('usuarioLogado', JSON.stringify(user));
+                localStorage.setItem('usuarioLogado', JSON.stringify(userLocal));
                 navigate('/');
             })
 

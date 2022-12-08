@@ -11,7 +11,7 @@ function ListarMusicas({id, nomeDaMusica, nomeDoArtista, idDaPlay}) {
         let idDaMusica = id
         console.log(id);
         axios.put(`http://localhost:3001/playlistsDeUsuarios/${idDaPlay}`, {idDaMusica})
-        // window.location.reload(false)
+        window.location.reload(false)
     }    
 
     return(
